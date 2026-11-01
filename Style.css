@@ -61,23 +61,28 @@ header {
 }
 .hero { padding: 80px 0; }
 
-/* ===== لوگو (رنگ سبز اصلی + حذف پس زمینه) ===== */
+/* ========================================= */
+/* ===== لوگو (تبدیل به سبز و حذف پس زمینه) ===== */
+/* ========================================= */
 .logo-img {
   max-height: 120px;
   width: auto;
   
-  /* این خط پس زمینه سفید را ناپدید می کند */
-  mix-blend-mode: multiply; 
+  /* 1. حذف پس زمینه سفید: با استفاده از blend mode */
+  mix-blend-mode: screen;
   
-  /* سایه ملایم برای جدا شدن از پس زمینه */
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
+  /* 2. تبدیل رنگ زرد به سبز تیره درخشان: 
+     مرورگر ابتدا عکس را سیاه و سفید (grayscale) می کند، 
+     سپس با sepia به آن رنگ قهوه ای می دهد، 
+     و در نهایت با hue-rotate رنگ را به سبز می چرخاند. */
+  filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.7) drop-shadow(0 0 20px rgba(15, 80, 50, 0.8));
   
   transition: transform 0.4s, filter 0.4s;
 }
 
 .logo-img:hover { 
   transform: scale(1.05);
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.3));
+  filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.9) drop-shadow(0 0 30px rgba(15, 80, 50, 1));
 }
 
 .since {
@@ -289,9 +294,9 @@ footer strong {
   .tilt { transform: none !important; }
   .btn-glow { padding: 12px 30px; font-size: 1rem; }
   
-  /* در موبایل برای جلوگیری از هرگونه باگ در نمایش لوگو */
+  /* در موبایل هم دقیقا همین فیلترها اعمال می شوند تا رنگ خراب نشود */
   .logo-img {
-    mix-blend-mode: screen; /* پس زمینه سفید را در موبایل کاملا محو می کند */
-    filter: none;
+    mix-blend-mode: screen;
+    filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.7) drop-shadow(0 0 20px rgba(15, 80, 50, 0.8));
   }
 }
