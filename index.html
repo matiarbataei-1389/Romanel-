@@ -3,227 +3,122 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ROMANEL | فراتر از زمان</title>
+<title>عصر زمان | ساعت رومانل</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="Style.css">
 </head>
 <body>
 
-<!-- بوم کهکشانی پس زمینه -->
-<canvas id="starfield"></canvas>
-
-<!-- موس سفارشی درخشان -->
-<div class="custom-cursor"></div>
-
-<header>
-  <div class="hero">
-    <div class="brand" data-parallax="0.2">
-      <img src="logo.png" alt="ROMANEL Logo" class="logo-img" id="magnetic-logo">
+<!-- هدر و منو -->
+<header class="main-header">
+  <div class="container header-inner">
+    <div class="logo">
+      <a href="#">عصر زمان</a>
     </div>
-    <div class="since">SINCE 1974</div>
-    
-    <!-- ساعت زنده -->
-    <div id="live-clock" class="clock">00:00:00</div>
-
-    <h1 class="metallic-text">فراتر از زمان؛ امضایی از سلیقه و ظرافت</h1>
-    <p class="subtitle">نگاهی به ساعتی با صفحه روشن، جزئیات آبی و بدنه نقره‌ای؛ ترکیبی از سادگی مدرن و جلوه‌ای لوکس.</p>
-    
-    <!-- دکمه مغناطیسی -->
-    <div class="btn-container">
-      <a class="btn-glow magnetic" href="#details">
-        <span>کشف جزئیات ساعت</span> ↓
-      </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#">صفحه اصلی</a></li>
+        <li><a href="#products">محصولات</a></li>
+        <li><a href="#">درباره ما</a></li>
+        <li><a href="#">تماس با ما</a></li>
+        <li><a href="#">گارانتی</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="#" class="btn-login">ورود / ثبت‌نام</a>
     </div>
   </div>
 </header>
 
-<main>
-  <section id="details">
-    <div class="kicker reveal">THE DESIGN</div>
-    <h2 class="reveal">زیبایی در جزئیات پنهان است</h2>
-    <p class="reveal">در نگاه اول، هماهنگی صفحه روشن با نشانگرها و عقربه‌های آبی توجه را جلب می‌کند. قاب نقره‌ای و بند فلزی، ظاهر ساعت را یکدست و امروزی نشان می‌دهند؛ بدون آن‌که طراحی بیش از اندازه شلوغ شود.</p>
-    <p class="reveal">پنجره نمایش تاریخ و صفحه فرعی در بخش پایینی، جزئیاتی کاربردی به طراحی اضافه می‌کنند. این ترکیب می‌تواند با استایل روزمره یا پوشش رسمی هماهنگ شود.</p>
-    
-    <!-- کارت های نئونی 3D -->
-    <div class="features">
-      <div class="card-wrapper reveal">
-        <div class="card-inner tilt">
-          <h3>✧ صفحه چشم‌نواز</h3>
-          <p>زمینه روشن در کنار جزئیات آبی، تضادی ظریف و خوانا ایجاد می‌کند.</p>
+<!-- بخش قهرمان (Hero) -->
+<section class="hero-section">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <span class="tagline">فراتر از زمان</span>
+      <h1>ساعت رومانل،<br>تجلی ظرافت و دقت</h1>
+      <p>مجموعه‌ای از ساعت‌های کلاسیک و مدرن با موتورهای ژاپنی و طراحی ایتالیایی، همراه با ۲۴ ماه گارانتی شرکت عصر زمان.</p>
+      <a href="#products" class="btn-primary">مشاهده محصولات</a>
+    </div>
+    <div class="hero-image">
+      <!-- تصویر نمونه، در صورت داشتن عکس واقعی جایگزین کنید -->
+      <img src="https://via.placeholder.com/500x500/1a1a1a/d4af37?text=ROMANEL" alt="ساعت رومانل">
+    </div>
+  </div>
+</section>
+
+<!-- بخش محصولات -->
+<section id="products" class="products-section">
+  <div class="container">
+    <h2 class="section-title">جدیدترین ساعت‌های رومانل</h2>
+    <div class="product-grid">
+      <!-- محصول ۱ -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://via.placeholder.com/300x300/1a1a1a/d4af37?text=RM123001M" alt="ساعت رومانل">
+        </div>
+        <div class="product-info">
+          <h3>ساعت رومانل مدل RM123001M.E</h3>
+          <p class="product-code">کد: RM123001M.E</p>
+          <p class="product-price">۱۲,۵۰۰,۰۰۰ تومان</p>
+          <a href="#" class="btn-add-to-cart">افزودن به سبد خرید</a>
         </div>
       </div>
-      <div class="card-wrapper reveal">
-        <div class="card-inner tilt">
-          <h3>◈ بدنه نقره‌ای</h3>
-          <p>ظاهر فلزی و براق، حس مرتب و مدرنی به ساعت می‌دهد.</p>
+      <!-- محصول ۲ -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://via.placeholder.com/300x300/1a1a1a/d4af37?text=RM402005M" alt="ساعت رومانل">
+        </div>
+        <div class="product-info">
+          <h3>ساعت رومانل مدل RM402005M.N</h3>
+          <p class="product-code">کد: RM402005M.N</p>
+          <p class="product-price">۱۴,۲۰۰,۰۰۰ تومان</p>
+          <a href="#" class="btn-add-to-cart">افزودن به سبد خرید</a>
         </div>
       </div>
-      <div class="card-wrapper reveal">
-        <div class="card-inner tilt">
-          <h3>◷ جزئیات کاربردی</h3>
-          <p>نمایش تاریخ و صفحه فرعی، به طراحی شخصیت بیشتری می‌بخشند.</p>
+      <!-- محصول ۳ -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://via.placeholder.com/300x300/1a1a1a/d4af37?text=RM312001L" alt="ساعت رومانل">
+        </div>
+        <div class="product-info">
+          <h3>ساعت رومانل مدل RM312001L.H</h3>
+          <p class="product-code">کد: RM312001L.H</p>
+          <p class="product-price">۱۰,۸۰۰,۰۰۰ تومان</p>
+          <a href="#" class="btn-add-to-cart">افزودن به سبد خرید</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="kicker reveal">TWO STYLES</div>
-    <h2 class="reveal">یک طراحی، دو حال‌وهوا</h2>
-    <p class="reveal">بند فلزی نقره‌ای برای ظاهری کلاسیک و مرتب مناسب است؛ بند چرمی سرمه‌ای با دوخت روشن، حال‌وهوایی متفاوت و کمی اسپرت‌تر به ساعت می‌دهد. انتخاب بین این دو، به سلیقه و موقعیت استفاده بستگی دارد.</p>
-  </section>
-
-  <section>
-    <div class="kicker reveal">THE PRESENTATION</div>
-    <h2 class="reveal">بسته‌بندی‌ای هماهنگ با ظاهر ساعت</h2>
-    <p class="reveal">جعبه مشکی با فضای داخلی روشن، همراه با بند چرمی اضافه و کارت همراه، مجموعه را برای نگهداری یا هدیه دادن جذاب‌تر می‌کند.</p>
-    
-    <!-- قاب عکس با حاشیه نئونی چرخان -->
-    <div class="image-wrapper reveal" data-parallax="0.05">
-      <img class="photo" src="header.png" alt="ساعت و جعبه ROMANEL">
+<!-- فوتر -->
+<footer class="main-footer">
+  <div class="container footer-content">
+    <div class="footer-col">
+      <h4>شرکت بازرگانی ساعت عصر زمان</h4>
+      <p>مرجع تخصصی ساعت‌های رومانل با گارانتی معتبر و خدمات پس از فروش.</p>
     </div>
-  </section>
-
-  <section>
-    <div class="quote reveal">
-      «زمان می‌گذرد؛ اما سلیقه‌ای که با دقت انتخاب شده، در خاطر می‌ماند.»
+    <div class="footer-col">
+      <h4>دسترسی سریع</h4>
+      <ul>
+        <li><a href="#">درباره ما</a></li>
+        <li><a href="#">تماس با ما</a></li>
+        <li><a href="#">لیست نمایندگان</a></li>
+      </ul>
     </div>
-    <h2 class="reveal">جمع‌بندی</h2>
-    <p class="reveal">ROMANEL با صفحه روشن، جزئیات آبی و ترکیب نقره‌ای، برای علاقه‌مندان به طراحی متعادل و شیک جذاب است. اگر به هماهنگی رنگ‌ها و ظرافت جزئیات اهمیت می‌دهید، این مدل ارزش بررسی دارد.</p>
-  </section>
-</main>
-
-<footer>
-  <strong class="metallic-text">ROMANEL</strong><br>
-  SINCE 1974<br>
-  فراتر از زمان، همراه لحظه‌های شما
+    <div class="footer-col">
+      <h4>خدمات مشتریان</h4>
+      <ul>
+        <li><a href="#">شرایط گارانتی</a></li>
+        <li><a href="#">سوالات متداول</a></li>
+        <li><a href="#">حریم خصوصی</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>تمامی حقوق برای شرکت عصر زمان محفوظ است. © ۱۴۰۳</p>
+  </div>
 </footer>
-
-<script>
-  /* ===== 1. ساعت زنده ===== */
-  function updateClock() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('fa-IR', { hour12: false });
-    document.getElementById('live-clock').textContent = timeString;
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  /* ===== 2. انیمیشن اسکرول (Reveal) ===== */
-  const reveals = document.querySelectorAll('.reveal');
-  const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target);
-    });
-  }, revealOptions);
-  reveals.forEach(reveal => revealOnScroll.observe(reveal));
-
-  /* ===== 3. افکت 3D Tilt ===== */
-  const tiltElements = document.querySelectorAll('.tilt');
-  tiltElements.forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -15;
-      const rotateY = ((x - centerX) / centerX) * 15;
-      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
-      el.style.transition = 'transform 0.5s ease';
-    });
-    el.addEventListener('mouseenter', () => { el.style.transition = 'none'; });
-  });
-
-  /* ===== 4. دکمه مغناطیسی ===== */
-  const magneticElements = document.querySelectorAll('.magnetic');
-  magneticElements.forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = `translate(0px, 0px)`;
-      el.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    });
-    el.addEventListener('mouseenter', () => { el.style.transition = 'none'; });
-  });
-
-  /* ===== 5. موس سفارشی ===== */
-  const cursor = document.querySelector('.custom-cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-  // بزرگ شدن موس روی لینک ها
-  document.querySelectorAll('a, .tilt').forEach(link => {
-    link.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-    link.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-  });
-
-  /* ===== 6. پارالاکس ===== */
-  document.addEventListener('mousemove', e => {
-    const x = (window.innerWidth - e.pageX) / 100;
-    const y = (window.innerHeight - e.pageY) / 100;
-    document.querySelectorAll('[data-parallax]').forEach(el => {
-      const speed = el.getAttribute('data-parallax');
-      el.style.transform = `translateX(${x * speed}px) translateY(${y * speed}px)`;
-    });
-  });
-
-  /* ===== 7. پس زمینه کهکشانی ===== */
-  const canvas = document.getElementById('starfield');
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  let stars = [];
-
-  function initCanvas() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    stars = [];
-    for (let i = 0; i < 200; i++) {
-      stars.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: Math.random() * 1.5,
-        vx: Math.random() * 0.5 - 0.25,
-        vy: Math.random() * 0.5 - 0.25,
-        alpha: Math.random() * 0.5 + 0.1
-      });
-    }
-  }
-
-  function drawStars() {
-    ctx.clearRect(0, 0, width, height);
-    stars.forEach(star => {
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(229, 196, 131, ${star.alpha})`; // رنگ طلایی ملایم
-      ctx.fill();
-      
-      star.x += star.vx;
-      star.y += star.vy;
-      
-      if (star.x < 0) star.x = width;
-      if (star.x > width) star.x = 0;
-      if (star.y < 0) star.y = height;
-      if (star.y > height) star.y = 0;
-    });
-    requestAnimationFrame(drawStars);
-  }
-
-  window.addEventListener('resize', initCanvas);
-  initCanvas();
-  drawStars();
-</script>
 
 </body>
 </html>
