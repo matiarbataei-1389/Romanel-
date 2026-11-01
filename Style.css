@@ -5,9 +5,7 @@
   --text-muted: #a0b8ad;
   --gold: #e8cc95;
   --gold-glow: rgba(232, 204, 149, 0.4);
-  --green-dark: #0a3a24; /* سبز تیره برای لوگو */
 }
-
 * { box-sizing: border-box; cursor: none; }
 html { scroll-behavior: smooth; }
 
@@ -62,23 +60,21 @@ header {
 }
 .hero { padding: 80px 0; }
 
-/* ===== لوگو (تبدیل زرد به سبز و حذف پس زمینه سفید) ===== */
+/* ===== لوگو ===== */
 .logo-img {
   max-height: 120px;
   width: auto;
   
-  /* حذف پس زمینه سفید */
-  mix-blend-mode: screen; 
-  
-  /* چرخش رنگ زرد به سبز + ایجاد هاله نور سبز تیره */
-  filter: hue-rotate(100deg) saturate(1.8) brightness(0.8) drop-shadow(0 0 25px rgba(15, 100, 60, 0.6));
+  /* فیلترهای قوی برای حذف پس زمینه سفید و تبدیل زرد به سبز تیره */
+  mix-blend-mode: multiply; /* پس زمینه سفید را ناپدید می کند */
+  filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(3) brightness(0.6) contrast(1.2) drop-shadow(0 0 15px rgba(20, 80, 50, 0.5));
   
   transition: transform 0.4s, filter 0.4s;
 }
 
 .logo-img:hover { 
   transform: scale(1.05);
-  filter: hue-rotate(100deg) saturate(2) brightness(1) drop-shadow(0 0 35px rgba(15, 100, 60, 0.9));
+  filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(3) brightness(0.8) contrast(1.2) drop-shadow(0 0 25px rgba(20, 80, 50, 0.8));
 }
 
 .since {
