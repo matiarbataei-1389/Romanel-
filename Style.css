@@ -1,16 +1,15 @@
-/* ===== متغیرها و پایه ===== */
+/* ===== متغیرها ===== */
 :root {
-  --bg-color: #030806;
+  --bg-color: #020504;
   --text-main: #ffffff;
-  --text-muted: #9bb5a8;
-  --gold: #e5c483;
-  --gold-glow: rgba(229, 196, 131, 0.6);
-  --glass-bg: rgba(14, 32, 24, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-muted: #a0b8ad;
+  --gold: #e8cc95;
+  --gold-glow: rgba(232, 204, 149, 0.4);
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; cursor: none; /* مخفی کردن موس پیش فرض */ }
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background-color: var(--bg-color);
@@ -20,35 +19,32 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== نورهای محیطی پس‌زمینه ===== */
-.ambient-light {
+/* ===== بوم کهکشانی ===== */
+#starfield {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   z-index: -1;
-  overflow: hidden;
   pointer-events: none;
 }
-.light-orb {
-  position: absolute;
+
+/* ===== موس سفارشی ===== */
+.custom-cursor {
+  position: fixed;
+  width: 20px; height: 20px;
+  background: rgba(232, 204, 149, 0.2);
+  border: 2px solid var(--gold);
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.5;
-  animation: drift 12s infinite alternate ease-in-out;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.3s, height 0.3s, background 0.3s;
+  backdrop-filter: blur(2px);
 }
-.light-1 {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(30, 80, 55, 0.8) 0%, transparent 60%);
-  top: -15%; right: -10%;
-}
-.light-2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(229, 196, 131, 0.15) 0%, transparent 60%);
-  bottom: -10%; left: -10%;
-  animation-duration: 18s;
-}
-@keyframes drift {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-80px, 60px) scale(1.1); }
+.custom-cursor.hovering {
+  width: 60px; height: 60px;
+  background: rgba(232, 204, 149, 0.1);
+  border-color: var(--gold);
 }
 
 /* ===== هدر ===== */
@@ -69,11 +65,8 @@ header {
 .logo-img {
   max-height: 110px;
   width: auto;
-  filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
-  transition: transform 0.4s;
+  filter: drop-shadow(0 0 20px rgba(232, 204, 149, 0.3));
 }
-.logo-img:hover { transform: scale(1.05); }
-
 .since {
   letter-spacing: 10px;
   color: var(--gold);
@@ -82,198 +75,204 @@ header {
   font-weight: 700;
 }
 
-/* ساعت زنده */
+/* ساعت */
 .clock {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 900;
   color: var(--text-main);
-  margin: 15px 0;
+  margin: 20px 0;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 20px rgba(255,255,255,0.2);
+  text-shadow: 0 0 30px rgba(255,255,255,0.2);
   direction: ltr;
   display: inline-block;
-  background: rgba(255,255,255,0.05);
-  padding: 5px 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  padding: 5px 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
 }
 
-/* تیتر با افکت درخشش (Shimmer) */
-.shimmer-text {
-  background: linear-gradient(90deg, #fff 0%, var(--gold) 50%, #fff 100%);
+/* متن متالیک (فلزی) */
+.metallic-text {
+  background: linear-gradient(to right, #b8c2bc 0%, #ffffff 25%, var(--gold) 50%, #ffffff 75%, #b8c2bc 100%);
   background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: shimmer 4s linear infinite;
+  animation: shine 5s linear infinite;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-@keyframes shimmer {
-  to { background-position: 200% center; }
+@keyframes shine {
+  to { background-position: -200% center; }
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   max-width: 800px;
   margin: 10px 0;
   font-weight: 900;
-  line-height: 1.4;
+  line-height: 1.3;
 }
-.hero p {
+.subtitle {
   max-width: 600px;
   color: var(--text-muted);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 }
 
-/* ===== دکمه مایع درخشان ===== */
+/* ===== دکمه مغناطیسی و درخشان ===== */
+.btn-container { margin-top: 40px; display: inline-block; }
 .btn-glow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   color: #000;
   background: var(--gold);
-  padding: 14px 35px;
+  padding: 16px 40px;
   text-decoration: none;
   border-radius: 50px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-top: 30px;
+  font-weight: 900;
+  font-size: 1.2rem;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 20px var(--gold-glow);
+  box-shadow: 0 0 30px var(--gold-glow), inset 0 0 10px rgba(255,255,255,0.5);
 }
 .btn-glow::before {
   content: '';
   position: absolute;
   top: 0; left: -100%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-  transition: 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  transition: 0.6s;
 }
-.btn-glow:hover::before {
-  left: 100%;
-}
-.btn-glow:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 30px var(--gold-glow);
-}
+.btn-glow:hover::before { left: 100%; }
 
 /* ===== بخش‌ها ===== */
 section {
-  padding: 80px 0;
+  padding: 100px 0;
   border-bottom: 1px solid rgba(255,255,255,0.03);
+  position: relative;
 }
 .kicker {
   color: var(--gold);
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   font-weight: 900;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   margin-bottom: 10px;
-  text-transform: uppercase;
 }
 h2 {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   margin: 0 0 20px 0;
   font-weight: 900;
+  color: #fff;
 }
-p { color: var(--text-muted); font-size: 1.05rem; }
+p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 
-/* ===== کارت های شیشه ای ===== */
+/* ===== کارت های نئونی 3D ===== */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
 }
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 20px;
+
+/* قاب چرخان نئونی */
+.card-wrapper {
   position: relative;
+  padding: 2px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.05);
   overflow: hidden;
 }
-/* خط نئونی بالای کارت */
-.glass::after {
+.card-wrapper::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  top: 50%; left: 50%;
+  width: 150%; height: 150%;
+  background: conic-gradient(transparent, transparent, transparent, var(--gold));
+  transform: translate(-50%, -50%);
+  animation: rotate 4s linear infinite;
   opacity: 0;
   transition: opacity 0.4s;
 }
-.glass:hover::after { opacity: 1; }
-
-.card {
-  padding: 35px 25px;
-  transition: all 0.4s ease;
+.card-wrapper:hover::before { opacity: 1; }
+@keyframes rotate {
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
-.card h3 { color: var(--gold); margin-top: 0; font-size: 1.4rem; font-weight: 700;}
-.card p { margin-bottom: 0; font-size: 0.95rem; }
 
-/* ===== عکس با کادر لوکس ===== */
+/* بدنه کارت (شیشه ای) */
+.card-inner {
+  background: #06120c; /* رنگ تیره برای پوشاندن پشت کارت */
+  border-radius: 22px;
+  padding: 40px 30px;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.card-inner h3 { color: var(--gold); margin-top: 0; font-size: 1.5rem; }
+.card-inner p { font-size: 1rem; margin-bottom: 0; }
+
+/* ===== عکس لوکس ===== */
 .image-wrapper {
   margin-top: 40px;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(229, 196, 131, 0.1);
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), var(--gold), rgba(255,255,255,0.1));
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 40px rgba(232, 204, 149, 0.2);
 }
 .photo {
   width: 100%;
   display: block;
+  border-radius: 22px;
 }
 
 /* ===== نقل قول ===== */
 .quote {
   text-align: center;
-  color: var(--text-main);
-  font-size: clamp(1.3rem, 3vw, 2rem);
-  padding: 50px 30px;
+  color: #fff;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  padding: 60px 30px;
   margin-bottom: 40px;
-  font-weight: 700;
-  line-height: 1.6;
+  font-weight: 900;
+  line-height: 1.5;
+  border-radius: 30px;
+  background: radial-gradient(circle, rgba(232, 204, 149, 0.08) 0%, transparent 70%);
 }
-.quote::before, .quote::after {
-  content: '”';
-  color: var(--gold);
-  font-size: 4rem;
-  line-height: 0;
-  vertical-align: -20px;
-}
+.quote::before { content: '”'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-left: 10px; }
+.quote::after { content: '“'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-right: 10px; }
 
 /* ===== فوتر ===== */
 footer {
   text-align: center;
-  background: #020604;
-  padding: 60px 30px;
+  background: #010302;
+  padding: 80px 30px;
   color: var(--text-muted);
+  border-top: 1px solid rgba(232, 204, 149, 0.1);
 }
 footer strong {
-  font-size: 2.5rem;
-  letter-spacing: 5px;
+  font-size: 3rem;
+  letter-spacing: 8px;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-/* ===== انیمیشن اسکرول (Reveal) ===== */
+/* ===== انیمیشن اسکرول ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+  transform: translateY(60px) scale(0.95);
+  transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .reveal.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-/* ===== تنظیمات موس و موبایل ===== */
-.tilt { will-change: transform; }
-
+/* ===== موبایل ===== */
 @media(max-width: 768px) {
+  * { cursor: auto; } /* برگرداندن موس در موبایل */
+  .custom-cursor { display: none; }
   .hero { padding: 60px 0; }
-  section { padding: 50px 0; }
-  .clock { font-size: 1.6rem; }
-  .tilt { transform: none !important; } /* غیرفعال کردن افکت 3D در موبایل */
-  }
+  section { padding: 60px 0; }
+  .clock { font-size: 1.8rem; }
+  .tilt { transform: none !important; }
+  .btn-glow { padding: 12px 30px; font-size: 1rem; }
+}
