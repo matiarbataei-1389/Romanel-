@@ -4,16 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ROMANEL | فراتر از زمان</title>
-<!-- فونت مدرن وزیرمتن -->
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="Style.css">
 </head>
 <body>
 
-<!-- پس زمینه متحرک نوری -->
-<div class="glow-bg">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
+<!-- لایه نورهای متحرک پس زمینه -->
+<div class="ambient-light">
+  <div class="light-orb light-1"></div>
+  <div class="light-orb light-2"></div>
 </div>
 
 <header>
@@ -23,12 +22,16 @@
     </div>
     <div class="since">SINCE 1974</div>
     
-    <!-- ساعت زنده دیجیتال -->
+    <!-- ساعت زنده -->
     <div id="live-clock" class="clock">00:00:00</div>
 
-    <h1 class="glow-text">فراتر از زمان؛ امضایی از سلیقه و ظرافت</h1>
+    <h1 class="shimmer-text">فراتر از زمان؛ امضایی از سلیقه و ظرافت</h1>
     <p>نگاهی به ساعتی با صفحه روشن، جزئیات آبی و بدنه نقره‌ای؛ ترکیبی از سادگی مدرن و جلوه‌ای لوکس.</p>
-    <a class="tag" href="#details">کشف جزئیات ساعت ↓</a>
+    
+    <!-- دکمه مایع درخشان -->
+    <a class="btn-glow" href="#details">
+      <span>کشف جزئیات ساعت</span> ↓
+    </a>
   </div>
 </header>
 
@@ -39,17 +42,17 @@
     <p>در نگاه اول، هماهنگی صفحه روشن با نشانگرها و عقربه‌های آبی توجه را جلب می‌کند. قاب نقره‌ای و بند فلزی، ظاهر ساعت را یکدست و امروزی نشان می‌دهند؛ بدون آن‌که طراحی بیش از اندازه شلوغ شود.</p>
     <p>پنجره نمایش تاریخ و صفحه فرعی در بخش پایینی، جزئیاتی کاربردی به طراحی اضافه می‌کنند. این ترکیب می‌تواند با استایل روزمره یا پوشش رسمی هماهنگ شود.</p>
     
-    <!-- کارت‌های شیشه ای -->
+    <!-- کارت های شیشه ای با افکت 3D -->
     <div class="features">
-      <div class="card glass">
+      <div class="card glass tilt">
         <h3>✧ صفحه چشم‌نواز</h3>
         <p>زمینه روشن در کنار جزئیات آبی، تضادی ظریف و خوانا ایجاد می‌کند.</p>
       </div>
-      <div class="card glass">
+      <div class="card glass tilt">
         <h3>◈ بدنه نقره‌ای</h3>
         <p>ظاهر فلزی و براق، حس مرتب و مدرنی به ساعت می‌دهد.</p>
       </div>
-      <div class="card glass">
+      <div class="card glass tilt">
         <h3>◷ جزئیات کاربردی</h3>
         <p>نمایش تاریخ و صفحه فرعی، به طراحی شخصیت بیشتری می‌بخشند.</p>
       </div>
@@ -67,7 +70,7 @@
     <h2>بسته‌بندی‌ای هماهنگ با ظاهر ساعت</h2>
     <p>جعبه مشکی با فضای داخلی روشن، همراه با بند چرمی اضافه و کارت همراه، مجموعه را برای نگهداری یا هدیه دادن جذاب‌تر می‌کند.</p>
     
-    <div class="image-wrapper">
+    <div class="image-wrapper tilt">
       <!-- عکسی که آپلود کردی -->
       <img class="photo" src="header.png" alt="ساعت و جعبه ROMANEL">
     </div>
@@ -83,12 +86,12 @@
 </main>
 
 <footer>
-  <strong>ROMANEL</strong><br>
+  <strong class="shimmer-text">ROMANEL</strong><br>
   SINCE 1974<br>
   فراتر از زمان، همراه لحظه‌های شما
 </footer>
 
-<!-- اسکریپت‌های انیمیشن و ساعت -->
+<!-- اسکریپت‌های انیمیشن‌های پیشرفته -->
 <script>
   // 1. ساعت زنده
   function updateClock() {
@@ -102,7 +105,6 @@
   // 2. انیمیشن اسکرول (Reveal)
   const reveals = document.querySelectorAll('.reveal');
   const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-  
   const revealOnScroll = new IntersectionObserver(function(entries, observer) {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -110,9 +112,34 @@
       observer.unobserve(entry.target);
     });
   }, revealOptions);
+  reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-  reveals.forEach(reveal => {
-    revealOnScroll.observe(reveal);
+  // 3. افکت سه بعدی (3D Tilt) با حرکت موس
+  const tiltElements = document.querySelectorAll('.tilt');
+  
+  tiltElements.forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((y - centerY) / centerY) * -10; // حداکثر 10 درجه
+      const rotateY = ((x - centerX) / centerX) * 10;
+
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+      el.style.transition = 'transform 0.5s ease';
+    });
+
+    el.addEventListener('mouseenter', () => {
+      el.style.transition = 'none';
+    });
   });
 </script>
 
