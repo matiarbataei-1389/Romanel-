@@ -6,6 +6,7 @@
   --gold: #e8cc95;
   --gold-glow: rgba(232, 204, 149, 0.4);
 }
+
 * { box-sizing: border-box; cursor: none; }
 html { scroll-behavior: smooth; }
 
@@ -60,21 +61,23 @@ header {
 }
 .hero { padding: 80px 0; }
 
-/* ===== لوگو ===== */
+/* ===== لوگو (رنگ سبز اصلی + حذف پس زمینه) ===== */
 .logo-img {
   max-height: 120px;
   width: auto;
   
-  /* فیلترهای قوی برای حذف پس زمینه سفید و تبدیل زرد به سبز تیره */
-  mix-blend-mode: multiply; /* پس زمینه سفید را ناپدید می کند */
-  filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(3) brightness(0.6) contrast(1.2) drop-shadow(0 0 15px rgba(20, 80, 50, 0.5));
+  /* این خط پس زمینه سفید را ناپدید می کند */
+  mix-blend-mode: multiply; 
+  
+  /* سایه ملایم برای جدا شدن از پس زمینه */
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
   
   transition: transform 0.4s, filter 0.4s;
 }
 
 .logo-img:hover { 
   transform: scale(1.05);
-  filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(3) brightness(0.8) contrast(1.2) drop-shadow(0 0 25px rgba(20, 80, 50, 0.8));
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.3));
 }
 
 .since {
@@ -276,7 +279,7 @@ footer strong {
   transform: translateY(0) scale(1);
 }
 
-/* ===== موبایل ===== */
+/* ===== تنظیمات موبایل ===== */
 @media(max-width: 768px) {
   * { cursor: auto; } 
   .custom-cursor { display: none; }
@@ -285,4 +288,10 @@ footer strong {
   .clock { font-size: 1.8rem; }
   .tilt { transform: none !important; }
   .btn-glow { padding: 12px 30px; font-size: 1rem; }
+  
+  /* در موبایل برای جلوگیری از هرگونه باگ در نمایش لوگو */
+  .logo-img {
+    mix-blend-mode: screen; /* پس زمینه سفید را در موبایل کاملا محو می کند */
+    filter: none;
+  }
 }
