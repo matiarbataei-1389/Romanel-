@@ -5,6 +5,7 @@
   --text-muted: #a0b8ad;
   --gold: #e8cc95;
   --gold-glow: rgba(232, 204, 149, 0.4);
+  --green-dark: #0a3a24; /* سبز تیره برای لوگو */
 }
 
 * { box-sizing: border-box; cursor: none; }
@@ -61,16 +62,24 @@ header {
 }
 .hero { padding: 80px 0; }
 
-/* ===== ترفند حذف پس زمینه سفید لوگو ===== */
+/* ===== لوگو (تبدیل زرد به سبز و حذف پس زمینه سفید) ===== */
 .logo-img {
   max-height: 120px;
   width: auto;
-  /* این فیلترها پس زمینه سفید را حذف و لوگو را طلایی می کنند */
-  filter: grayscale(1) invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(1.2) drop-shadow(0 0 25px rgba(232, 204, 149, 0.5));
-  mix-blend-mode: screen; /* سفیدی را ناپدید می کند */
-  transition: transform 0.4s;
+  
+  /* حذف پس زمینه سفید */
+  mix-blend-mode: screen; 
+  
+  /* چرخش رنگ زرد به سبز + ایجاد هاله نور سبز تیره */
+  filter: hue-rotate(100deg) saturate(1.8) brightness(0.8) drop-shadow(0 0 25px rgba(15, 100, 60, 0.6));
+  
+  transition: transform 0.4s, filter 0.4s;
 }
-.logo-img:hover { transform: scale(1.05); }
+
+.logo-img:hover { 
+  transform: scale(1.05);
+  filter: hue-rotate(100deg) saturate(2) brightness(1) drop-shadow(0 0 35px rgba(15, 100, 60, 0.9));
+}
 
 .since {
   letter-spacing: 10px;
