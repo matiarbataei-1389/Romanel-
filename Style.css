@@ -1,10 +1,10 @@
 /* ===== متغیرها ===== */
 :root {
-  --bg-color: #020504;
+  --bg-color: #040806; /* مشکی مایل به سبز خیلی تیره */
   --text-main: #ffffff;
-  --text-muted: #a0b8ad;
-  --gold: #e8cc95;
-  --gold-glow: rgba(232, 204, 149, 0.4);
+  --text-muted: #9bb5a8;
+  --gold: #e5c483; /* رنگ طلایی لوکس */
+  --gold-glow: rgba(229, 196, 131, 0.4);
 }
 
 * { box-sizing: border-box; cursor: none; }
@@ -31,20 +31,20 @@ body {
 /* ===== موس سفارشی ===== */
 .custom-cursor {
   position: fixed;
-  width: 20px; height: 20px;
-  background: rgba(232, 204, 149, 0.2);
-  border: 2px solid var(--gold);
+  width: 15px; height: 15px;
+  background: var(--gold);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9999;
-  transition: width 0.3s, height 0.3s, background 0.3s;
-  backdrop-filter: blur(2px);
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+  box-shadow: 0 0 20px var(--gold-glow);
+  mix-blend-mode: difference;
 }
 .custom-cursor.hovering {
-  width: 60px; height: 60px;
-  background: rgba(232, 204, 149, 0.1);
-  border-color: var(--gold);
+  width: 50px; height: 50px;
+  background: transparent;
+  border: 2px solid var(--gold);
 }
 
 /* ===== هدر ===== */
@@ -61,28 +61,23 @@ header {
 }
 .hero { padding: 80px 0; }
 
-/* ========================================= */
-/* ===== لوگو (تبدیل به سبز و حذف پس زمینه) ===== */
-/* ========================================= */
+/* ===== لوگو (تبدیل به طلایی + حذف پس زمینه) ===== */
 .logo-img {
   max-height: 120px;
   width: auto;
   
-  /* 1. حذف پس زمینه سفید: با استفاده از blend mode */
-  mix-blend-mode: screen;
+  /* 1. حذف پس زمینه سفید */
+  mix-blend-mode: multiply; 
   
-  /* 2. تبدیل رنگ زرد به سبز تیره درخشان: 
-     مرورگر ابتدا عکس را سیاه و سفید (grayscale) می کند، 
-     سپس با sepia به آن رنگ قهوه ای می دهد، 
-     و در نهایت با hue-rotate رنگ را به سبز می چرخاند. */
-  filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.7) drop-shadow(0 0 20px rgba(15, 80, 50, 0.8));
+  /* 2. تبدیل لوگو به رنگ طلایی با یک روش استاندارد و بدون خراب شدن رنگ */
+  filter: grayscale(1) sepia(1) saturate(5) hue-rotate(5deg) brightness(1.2) drop-shadow(0 0 25px var(--gold-glow));
   
   transition: transform 0.4s, filter 0.4s;
 }
 
 .logo-img:hover { 
   transform: scale(1.05);
-  filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.9) drop-shadow(0 0 30px rgba(15, 80, 50, 1));
+  filter: grayscale(1) sepia(1) saturate(5) hue-rotate(5deg) brightness(1.4) drop-shadow(0 0 35px rgba(229, 196, 131, 0.8));
 }
 
 .since {
@@ -117,7 +112,7 @@ header {
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: shine 5s linear infinite;
+  animation: shine 6s linear infinite;
   text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 @keyframes shine {
@@ -153,6 +148,10 @@ header {
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 30px var(--gold-glow), inset 0 0 10px rgba(255,255,255,0.5);
+  transition: box-shadow 0.3s;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 50px var(--gold-glow), inset 0 0 15px rgba(255,255,255,0.8);
 }
 .btn-glow::before {
   content: '';
@@ -162,6 +161,8 @@ header {
   transition: 0.6s;
 }
 .btn-glow:hover::before { left: 100%; }
+.arrow { transition: transform 0.3s; }
+.btn-glow:hover .arrow { transform: translateY(5px); }
 
 /* ===== بخش‌ها ===== */
 section {
@@ -184,7 +185,7 @@ h2 {
 }
 p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 
-/* ===== کارت های نئونی 3D ===== */
+/* ===== کارت های شیشه ای 3D ===== */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -192,7 +193,6 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
   margin-top: 50px;
 }
 
-/* قاب چرخان نئونی */
 .card-wrapper {
   position: relative;
   padding: 2px;
@@ -216,9 +216,10 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* بدنه کارت (شیشه ای) */
 .card-inner {
-  background: #06120c; 
+  background: rgba(8, 20, 14, 0.7); /* شیشه ای مات */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-radius: 22px;
   padding: 40px 30px;
   position: relative;
@@ -226,21 +227,26 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
   height: 100%;
   border: 1px solid rgba(255,255,255,0.05);
 }
-.card-inner h3 { color: var(--gold); margin-top: 0; font-size: 1.5rem; }
-.card-inner p { font-size: 1rem; margin-bottom: 0; }
+.card-inner .icon {
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+.card-inner h3 { color: #fff; margin-top: 0; font-size: 1.4rem; }
+.card-inner p { font-size: 1rem; margin-bottom: 0; color: var(--text-muted); }
 
 /* ===== عکس لوکس ===== */
 .image-wrapper {
   margin-top: 40px;
   border-radius: 24px;
-  padding: 2px;
-  background: linear-gradient(45deg, rgba(255,255,255,0.1), var(--gold), rgba(255,255,255,0.1));
-  box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 40px rgba(232, 204, 149, 0.2);
+  padding: 3px;
+  background: linear-gradient(45deg, rgba(255,255,255,0.05), var(--gold), rgba(255,255,255,0.05));
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 50px rgba(229, 196, 131, 0.15);
 }
 .photo {
   width: 100%;
   display: block;
-  border-radius: 22px;
+  border-radius: 21px;
 }
 
 /* ===== نقل قول ===== */
@@ -253,7 +259,7 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
   font-weight: 900;
   line-height: 1.5;
   border-radius: 30px;
-  background: radial-gradient(circle, rgba(232, 204, 149, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(229, 196, 131, 0.05) 0%, transparent 70%);
 }
 .quote::before { content: '”'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-left: 10px; }
 .quote::after { content: '“'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-right: 10px; }
@@ -261,10 +267,10 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 /* ===== فوتر ===== */
 footer {
   text-align: center;
-  background: #010302;
+  background: #020403;
   padding: 80px 30px;
   color: var(--text-muted);
-  border-top: 1px solid rgba(232, 204, 149, 0.1);
+  border-top: 1px solid rgba(229, 196, 131, 0.1);
 }
 footer strong {
   font-size: 3rem;
@@ -276,12 +282,12 @@ footer strong {
 /* ===== انیمیشن اسکرول ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(60px) scale(0.95);
-  transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .reveal.active {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 /* ===== تنظیمات موبایل ===== */
@@ -294,9 +300,9 @@ footer strong {
   .tilt { transform: none !important; }
   .btn-glow { padding: 12px 30px; font-size: 1rem; }
   
-  /* در موبایل هم دقیقا همین فیلترها اعمال می شوند تا رنگ خراب نشود */
+  /* تنظیم لوگو برای موبایل */
   .logo-img {
-    mix-blend-mode: screen;
-    filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.7) drop-shadow(0 0 20px rgba(15, 80, 50, 0.8));
+    mix-blend-mode: screen; 
+    filter: grayscale(1) sepia(1) saturate(5) hue-rotate(5deg) brightness(1.2);
   }
 }
