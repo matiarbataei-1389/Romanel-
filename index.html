@@ -9,16 +9,15 @@
 </head>
 <body>
 
-<!-- پس زمینه کهکشانی و ذرات معلق -->
+<!-- بوم کهکشانی پس زمینه -->
 <canvas id="starfield"></canvas>
 
-<!-- موس درخشان سفارشی -->
+<!-- موس سفارشی درخشان -->
 <div class="custom-cursor"></div>
 
 <header>
   <div class="hero">
-    <div class="brand reveal" data-parallax="0.1">
-      <!-- لوگوی طلایی -->
+    <div class="brand reveal">
       <img src="logo.png" alt="ROMANEL Logo" class="logo-img">
     </div>
     
@@ -30,7 +29,6 @@
     <h1 class="metallic-text reveal">فراتر از زمان؛<br>امضایی از سلیقه و ظرافت</h1>
     <p class="subtitle reveal">نگاهی به ساعتی با صفحه روشن، جزئیات آبی و بدنه نقره‌ای؛ ترکیبی از سادگی مدرن و جلوه‌ای لوکس.</p>
     
-    <!-- دکمه مغناطیسی -->
     <div class="btn-container reveal">
       <a class="btn-glow magnetic" href="#details">
         <span>کشف جزئیات ساعت</span> <span class="arrow">↓</span>
@@ -44,9 +42,7 @@
     <div class="kicker reveal">THE DESIGN</div>
     <h2 class="reveal">زیبایی در جزئیات پنهان است</h2>
     <p class="reveal">در نگاه اول، هماهنگی صفحه روشن با نشانگرها و عقربه‌های آبی توجه را جلب می‌کند. قاب نقره‌ای و بند فلزی، ظاهر ساعت را یکدست و امروزی نشان می‌دهند؛ بدون آن‌که طراحی بیش از اندازه شلوغ شود.</p>
-    <p class="reveal">پنجره نمایش تاریخ و صفحه فرعی در بخش پایینی، جزئیاتی کاربردی به طراحی اضافه می‌کنند. این ترکیب می‌تواند با استایل روزمره یا پوشش رسمی هماهنگ شود.</p>
     
-    <!-- کارت های شیشه ای 3D -->
     <div class="features">
       <div class="card-wrapper reveal">
         <div class="card-inner tilt">
@@ -72,20 +68,15 @@
     </div>
   </section>
 
-  <section>
-    <div class="kicker reveal">TWO STYLES</div>
-    <h2 class="reveal">یک طراحی، دو حال‌وهوا</h2>
-    <p class="reveal">بند فلزی نقره‌ای برای ظاهری کلاسیک و مرتب مناسب است؛ بند چرمی سرمه‌ای با دوخت روشن، حال‌وهوایی متفاوت و کمی اسپرت‌تر به ساعت می‌دهد. انتخاب بین این دو، به سلیقه و موقعیت استفاده بستگی دارد.</p>
-  </section>
-
+  <!-- بخش بسته بندی با عکس دوم (جعبه سبز) -->
   <section>
     <div class="kicker reveal">THE PRESENTATION</div>
     <h2 class="reveal">بسته‌بندی‌ای هماهنگ با ظاهر ساعت</h2>
-    <p class="reveal">جعبه مشکی با فضای داخلی روشن، همراه با بند چرمی اضافه و کارت همراه، مجموعه را برای نگهداری یا هدیه دادن جذاب‌تر می‌کند.</p>
+    <p class="reveal">جعبه مخملی سبز با فضای داخلی لوکس، همراه با کارت گارانتی و طراحی اختصاصی، مجموعه را برای نگهداری یا هدیه دادن جذاب‌تر می‌کند.</p>
     
-    <!-- قاب عکس لوکس -->
     <div class="image-wrapper reveal" data-parallax="0.05">
-      <img class="photo" src="header.png" alt="ساعت و جعبه ROMANEL">
+      <!-- عکس جعبه سبز رنگ -->
+      <img class="photo" src="box.jpg" alt="جعبه و ساعت رومانل">
     </div>
   </section>
 
@@ -105,128 +96,82 @@
 </footer>
 
 <script>
-  /* ===== 1. ساعت زنده ===== */
+  // 1. ساعت زنده
   function updateClock() {
     const now = new Date();
-    const timeString = now.toLocaleTimeString('fa-IR', { hour12: false });
-    document.getElementById('live-clock').textContent = timeString;
+    document.getElementById('live-clock').textContent = now.toLocaleTimeString('fa-IR', { hour12: false });
   }
   setInterval(updateClock, 1000);
   updateClock();
 
-  /* ===== 2. انیمیشن اسکرول (Reveal) ===== */
+  // 2. انیمیشن اسکرول
   const reveals = document.querySelectorAll('.reveal');
-  const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+  const revealOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('active');
       observer.unobserve(entry.target);
     });
-  }, revealOptions);
+  }, { threshold: 0.1 });
   reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-  /* ===== 3. افکت 3D Tilt ===== */
-  const tiltElements = document.querySelectorAll('.tilt');
-  tiltElements.forEach(el => {
+  // 3. افکت 3D Tilt
+  document.querySelectorAll('.tilt').forEach(el => {
     el.addEventListener('mousemove', e => {
       const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -10;
-      const rotateY = ((x - centerX) / centerX) * 10;
-      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+      const centerX = rect.width / 2; const centerY = rect.height / 2;
+      el.style.transform = `perspective(1000px) rotateX(${((y - centerY) / centerY) * -10}deg) rotateY(${((x - centerX) / centerX) * 10}deg) scale3d(1.02, 1.02, 1.02)`;
     });
     el.addEventListener('mouseleave', () => {
       el.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
       el.style.transition = 'transform 0.5s ease';
     });
-    el.addEventListener('mouseenter', () => { el.style.transition = 'none'; });
+    el.addEventListener('mouseenter', () => el.style.transition = 'none');
   });
 
-  /* ===== 4. دکمه مغناطیسی ===== */
-  const magneticElements = document.querySelectorAll('.magnetic');
-  magneticElements.forEach(el => {
+  // 4. دکمه مغناطیسی
+  document.querySelectorAll('.magnetic').forEach(el => {
     el.addEventListener('mousemove', e => {
       const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+      const x = e.clientX - rect.left - rect.width / 2; const y = e.clientY - rect.top - rect.height / 2;
       el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
     });
     el.addEventListener('mouseleave', () => {
       el.style.transform = `translate(0px, 0px)`;
       el.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
     });
-    el.addEventListener('mouseenter', () => { el.style.transition = 'none'; });
+    el.addEventListener('mouseenter', () => el.style.transition = 'none');
   });
 
-  /* ===== 5. موس سفارشی ===== */
+  // 5. موس سفارشی
   const cursor = document.querySelector('.custom-cursor');
   document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
   });
   document.querySelectorAll('a, .tilt, .logo-img').forEach(link => {
     link.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
     link.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   });
 
-  /* ===== 6. پارالاکس ===== */
-  document.addEventListener('mousemove', e => {
-    const x = (window.innerWidth - e.pageX) / 100;
-    const y = (window.innerHeight - e.pageY) / 100;
-    document.querySelectorAll('[data-parallax]').forEach(el => {
-      const speed = el.getAttribute('data-parallax');
-      el.style.transform = `translateX(${x * speed}px) translateY(${y * speed}px)`;
-    });
-  });
-
-  /* ===== 7. پس زمینه کهکشانی ===== */
-  const canvas = document.getElementById('starfield');
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  let stars = [];
-
+  // 6. کهکشان
+  const canvas = document.getElementById('starfield'); const ctx = canvas.getContext('2d');
+  let width, height, stars = [];
   function initCanvas() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    stars = [];
-    for (let i = 0; i < 150; i++) {
-      stars.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: Math.random() * 1.5,
-        vx: Math.random() * 0.3 - 0.15,
-        vy: Math.random() * 0.3 - 0.15,
-        alpha: Math.random() * 0.5 + 0.1
-      });
-    }
+    width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; stars = [];
+    for (let i = 0; i < 150; i++) stars.push({ x: Math.random() * width, y: Math.random() * height, radius: Math.random() * 1.5, vx: Math.random() * 0.3 - 0.15, vy: Math.random() * 0.3 - 0.15, alpha: Math.random() * 0.5 + 0.1 });
   }
-
   function drawStars() {
     ctx.clearRect(0, 0, width, height);
     stars.forEach(star => {
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(229, 196, 131, ${star.alpha})`; 
-      ctx.fill();
-      
-      star.x += star.vx;
-      star.y += star.vy;
-      
-      if (star.x < 0) star.x = width;
-      if (star.x > width) star.x = 0;
-      if (star.y < 0) star.y = height;
-      if (star.y > height) star.y = 0;
+      ctx.beginPath(); ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2); ctx.fillStyle = `rgba(229, 196, 131, ${star.alpha})`; ctx.fill();
+      star.x += star.vx; star.y += star.vy;
+      if (star.x < 0) star.x = width; if (star.x > width) star.x = 0;
+      if (star.y < 0) star.y = height; if (star.y > height) star.y = 0;
     });
     requestAnimationFrame(drawStars);
   }
-
-  window.addEventListener('resize', initCanvas);
-  initCanvas();
-  drawStars();
+  window.addEventListener('resize', initCanvas); initCanvas(); drawStars();
 </script>
 
 </body>
