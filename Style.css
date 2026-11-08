@@ -5,7 +5,7 @@
   --text-muted: #9bb5a8;
   --gold: #e5c483;
   --gold-glow: rgba(229, 196, 131, 0.4);
-  --brand-green: #0f4a2b; /* سبز تیره و لوکس */
+  --brand-green: #0f4a2b; /* سبز تیره */
   --brand-green-glow: rgba(15, 74, 43, 0.5);
 }
 
@@ -130,55 +130,24 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 .quote::after { content: '“'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-right: 10px; }
 
 /* ========================================= */
-/* ===== فوتر (اصلاح نهایی و کاملاً منظم) ===== */
+/* ===== فوتر (نسخه قبلی) ===== */
 /* ========================================= */
 footer { 
   text-align: center; 
   background: #020403; 
-  padding: 60px 20px; 
+  padding: 80px 30px; 
+  color: var(--text-muted); 
   border-top: 1px solid rgba(229, 196, 131, 0.1); 
-}
-
-/* ظرف قرارگیری لوگو و متن کنار هم */
-.footer-brand-container {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* وسط چین کردن کامل */
-  gap: 15px; /* فاصله بین لوگو و متن */
-  margin-bottom: 10px;
-}
-
-/* لوگوی کوچک فوتر */
-.footer-logo {
-  height: 50px;
-  width: auto;
-  mix-blend-mode: multiply;
-  filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(2) brightness(0.6) drop-shadow(0 0 10px var(--brand-green-glow));
 }
 
 /* کلمه ROMANEL در فوتر */
 .footer-brand-text { 
-  font-size: 2.5rem; 
-  letter-spacing: 4px; /* فاصله حروف کم شد تا از کادر بیرون نزند */
-  color: var(--brand-green);
+  font-size: 3rem; 
+  letter-spacing: 5px; 
+  display: block; 
+  margin-bottom: 15px; 
+  color: var(--brand-green); 
   text-shadow: 0 0 15px rgba(15, 74, 43, 0.3);
-  line-height: 1; 
-}
-
-/* SINCE 1974 در فوتر */
-.footer-since {
-  color: var(--brand-green);
-  letter-spacing: 6px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-/* متن پایانی */
-.footer-tagline {
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin: 0;
 }
 
 /* انیمیشن اسکرول */
@@ -192,9 +161,4 @@ footer {
   .hero { padding: 60px 0; } section { padding: 60px 0; }
   .clock { font-size: 1.8rem; } .tilt { transform: none !important; } .btn-glow { padding: 12px 30px; font-size: 1rem; }
   .logo-img { mix-blend-mode: screen; filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(2) brightness(0.6); }
-  
-  /* تنظیم فوتر در موبایل */
-  .footer-brand-container { flex-direction: row; gap: 10px; }
-  .footer-brand-text { font-size: 1.8rem; letter-spacing: 2px; }
-  .footer-logo { height: 35px; }
 }
