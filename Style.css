@@ -31,13 +31,12 @@ body {
 }
 .custom-cursor.hovering { width: 50px; height: 50px; background: transparent; border: 2px solid var(--gold); }
 
-/* ===== هدر (عکس اول: ساعت طلایی روی صدف) ===== */
+/* ===== هدر (عکس اول: ساعت طلایی) ===== */
 header {
   min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
-  /* پس زمینه با عکس و یک لایه گرادیان تیره برای خوانایی متن */
   background: linear-gradient(90deg, rgba(4, 8, 6, 0.95) 0%, rgba(4, 8, 6, 0.4) 100%), 
               url('hero-bg.jpg') center/cover no-repeat;
 }
@@ -105,7 +104,7 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 .card-inner h3 { color: #fff; margin-top: 0; font-size: 1.4rem; }
 .card-inner p { font-size: 1rem; margin-bottom: 0; color: var(--text-muted); }
 
-/* ===== عکس جعبه (عکس دوم) ===== */
+/* ===== عکس‌های لوکس ===== */
 .image-wrapper {
   margin-top: 40px; border-radius: 24px; padding: 3px;
   background: linear-gradient(45deg, rgba(255,255,255,0.05), var(--gold), rgba(255,255,255,0.05));
