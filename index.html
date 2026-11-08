@@ -9,30 +9,31 @@
 </head>
 <body>
 
-<!-- بوم کهکشانی پس زمینه -->
+<!-- پس زمینه کهکشانی و ذرات معلق -->
 <canvas id="starfield"></canvas>
 
-<!-- موس سفارشی درخشان -->
+<!-- موس درخشان سفارشی -->
 <div class="custom-cursor"></div>
 
 <header>
   <div class="hero">
-    <div class="brand" data-parallax="0.2">
-      <!-- لوگو -->
-      <img src="logo.png" alt="ROMANEL Logo" class="logo-img" id="magnetic-logo">
+    <div class="brand reveal" data-parallax="0.1">
+      <!-- لوگوی طلایی -->
+      <img src="logo.png" alt="ROMANEL Logo" class="logo-img">
     </div>
-    <div class="since">SINCE 1974</div>
+    
+    <div class="since reveal">SINCE 1974</div>
     
     <!-- ساعت زنده -->
-    <div id="live-clock" class="clock">00:00:00</div>
+    <div id="live-clock" class="clock reveal">00:00:00</div>
 
-    <h1 class="metallic-text">فراتر از زمان؛ امضایی از سلیقه و ظرافت</h1>
-    <p class="subtitle">نگاهی به ساعتی با صفحه روشن، جزئیات آبی و بدنه نقره‌ای؛ ترکیبی از سادگی مدرن و جلوه‌ای لوکس.</p>
+    <h1 class="metallic-text reveal">فراتر از زمان؛<br>امضایی از سلیقه و ظرافت</h1>
+    <p class="subtitle reveal">نگاهی به ساعتی با صفحه روشن، جزئیات آبی و بدنه نقره‌ای؛ ترکیبی از سادگی مدرن و جلوه‌ای لوکس.</p>
     
     <!-- دکمه مغناطیسی -->
-    <div class="btn-container">
+    <div class="btn-container reveal">
       <a class="btn-glow magnetic" href="#details">
-        <span>کشف جزئیات ساعت</span> ↓
+        <span>کشف جزئیات ساعت</span> <span class="arrow">↓</span>
       </a>
     </div>
   </div>
@@ -45,23 +46,26 @@
     <p class="reveal">در نگاه اول، هماهنگی صفحه روشن با نشانگرها و عقربه‌های آبی توجه را جلب می‌کند. قاب نقره‌ای و بند فلزی، ظاهر ساعت را یکدست و امروزی نشان می‌دهند؛ بدون آن‌که طراحی بیش از اندازه شلوغ شود.</p>
     <p class="reveal">پنجره نمایش تاریخ و صفحه فرعی در بخش پایینی، جزئیاتی کاربردی به طراحی اضافه می‌کنند. این ترکیب می‌تواند با استایل روزمره یا پوشش رسمی هماهنگ شود.</p>
     
-    <!-- کارت های نئونی 3D -->
+    <!-- کارت های شیشه ای 3D -->
     <div class="features">
       <div class="card-wrapper reveal">
         <div class="card-inner tilt">
-          <h3>✧ صفحه چشم‌نواز</h3>
+          <div class="icon">✧</div>
+          <h3>صفحه چشم‌نواز</h3>
           <p>زمینه روشن در کنار جزئیات آبی، تضادی ظریف و خوانا ایجاد می‌کند.</p>
         </div>
       </div>
       <div class="card-wrapper reveal">
         <div class="card-inner tilt">
-          <h3>◈ بدنه نقره‌ای</h3>
+          <div class="icon">◈</div>
+          <h3>بدنه نقره‌ای</h3>
           <p>ظاهر فلزی و براق، حس مرتب و مدرنی به ساعت می‌دهد.</p>
         </div>
       </div>
       <div class="card-wrapper reveal">
         <div class="card-inner tilt">
-          <h3>◷ جزئیات کاربردی</h3>
+          <div class="icon">◷</div>
+          <h3>جزئیات کاربردی</h3>
           <p>نمایش تاریخ و صفحه فرعی، به طراحی شخصیت بیشتری می‌بخشند.</p>
         </div>
       </div>
@@ -79,7 +83,7 @@
     <h2 class="reveal">بسته‌بندی‌ای هماهنگ با ظاهر ساعت</h2>
     <p class="reveal">جعبه مشکی با فضای داخلی روشن، همراه با بند چرمی اضافه و کارت همراه، مجموعه را برای نگهداری یا هدیه دادن جذاب‌تر می‌کند.</p>
     
-    <!-- قاب عکس با حاشیه نئونی چرخان -->
+    <!-- قاب عکس لوکس -->
     <div class="image-wrapper reveal" data-parallax="0.05">
       <img class="photo" src="header.png" alt="ساعت و جعبه ROMANEL">
     </div>
@@ -131,9 +135,9 @@
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -15;
-      const rotateY = ((x - centerX) / centerX) * 15;
-      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+      const rotateX = ((y - centerY) / centerY) * -10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     });
     el.addEventListener('mouseleave', () => {
       el.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
@@ -164,7 +168,7 @@
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
-  document.querySelectorAll('a, .tilt').forEach(link => {
+  document.querySelectorAll('a, .tilt, .logo-img').forEach(link => {
     link.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
     link.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   });
@@ -189,13 +193,13 @@
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
     stars = [];
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 150; i++) {
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
         radius: Math.random() * 1.5,
-        vx: Math.random() * 0.5 - 0.25,
-        vy: Math.random() * 0.5 - 0.25,
+        vx: Math.random() * 0.3 - 0.15,
+        vy: Math.random() * 0.3 - 0.15,
         alpha: Math.random() * 0.5 + 0.1
       });
     }
