@@ -63,7 +63,6 @@
     </div>
   </section>
 
-  <!-- بخش جدید: عکس سوم (ساعت اسپرت) -->
   <section>
     <div class="kicker reveal">CHRONOGRAPH</div>
     <h2 class="reveal">مهندسی شده برای موفقیت</h2>
@@ -74,7 +73,6 @@
     </div>
   </section>
 
-  <!-- بخش بسته بندی: عکس دوم (جعبه سبز) -->
   <section>
     <div class="kicker reveal">THE PRESENTATION</div>
     <h2 class="reveal">بسته‌بندی‌ای هماهنگ با ظاهر ساعت</h2>
@@ -94,10 +92,9 @@
   </section>
 </main>
 
-<!-- فوتر (اصلاح شده) -->
+<!-- ===== فوتر اصلاح شده (لوگو و متن کنار هم) ===== -->
 <footer>
   <div class="footer-brand-container">
-    <!-- لوگوی کوچک سبز در فوتر -->
     <img src="logo.png" alt="Logo" class="footer-logo">
     <strong class="footer-brand-text">ROMANEL</strong>
   </div>
@@ -106,7 +103,6 @@
 </footer>
 
 <script>
-  // ساعت زنده
   function updateClock() {
     const now = new Date();
     document.getElementById('live-clock').textContent = now.toLocaleTimeString('fa-IR', { hour12: false });
@@ -114,7 +110,6 @@
   setInterval(updateClock, 1000);
   updateClock();
 
-  // انیمیشن اسکرول
   const reveals = document.querySelectorAll('.reveal');
   const revealOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -125,7 +120,6 @@
   }, { threshold: 0.1 });
   reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-  // افکت 3D
   document.querySelectorAll('.tilt').forEach(el => {
     el.addEventListener('mousemove', e => {
       const rect = el.getBoundingClientRect();
@@ -139,7 +133,6 @@
     el.addEventListener('mouseenter', () => el.style.transition = 'none');
   });
 
-  // دکمه مغناطیسی
   document.querySelectorAll('.magnetic').forEach(el => {
     el.addEventListener('mousemove', e => {
       const rect = el.getBoundingClientRect();
@@ -152,7 +145,6 @@
     el.addEventListener('mouseenter', () => el.style.transition = 'none');
   });
 
-  // موس سفارشی
   const cursor = document.querySelector('.custom-cursor');
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
@@ -162,7 +154,6 @@
     link.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   });
 
-  // کهکشان
   const canvas = document.getElementById('starfield'); const ctx = canvas.getContext('2d');
   let width, height, stars = [];
   function initCanvas() {
