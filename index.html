@@ -9,10 +9,7 @@
 </head>
 <body>
 
-<!-- بوم کهکشانی پس زمینه -->
 <canvas id="starfield"></canvas>
-
-<!-- موس سفارشی درخشان -->
 <div class="custom-cursor"></div>
 
 <header>
@@ -22,8 +19,6 @@
     </div>
     
     <div class="since reveal">SINCE 1974</div>
-    
-    <!-- ساعت زنده -->
     <div id="live-clock" class="clock reveal">00:00:00</div>
 
     <h1 class="metallic-text reveal">فراتر از زمان؛<br>امضایی از سلیقه و ظرافت</h1>
@@ -68,14 +63,24 @@
     </div>
   </section>
 
-  <!-- بخش بسته بندی با عکس دوم (جعبه سبز) -->
+  <!-- بخش جدید: عکس سوم (ساعت اسپرت) -->
+  <section>
+    <div class="kicker reveal">CHRONOGRAPH</div>
+    <h2 class="reveal">مهندسی شده برای موفقیت</h2>
+    <p class="reveal">ترکیب بی‌نظیر استایل ایتالیایی با تکنولوژی روز دنیا. مقاوم در برابر آب تا ۱۰ اتمسفر، بدنه فوق‌العاده بادوام و بند سیلیکونی راحت، این ساعت را به همراهی ایده‌آل برای هر لحظه تبدیل کرده است.</p>
+    
+    <div class="image-wrapper reveal" data-parallax="0.05">
+      <img class="photo" src="sport.jpg" alt="ساعت کرونوگراف رومانل">
+    </div>
+  </section>
+
+  <!-- بخش بسته بندی: عکس دوم (جعبه سبز) -->
   <section>
     <div class="kicker reveal">THE PRESENTATION</div>
     <h2 class="reveal">بسته‌بندی‌ای هماهنگ با ظاهر ساعت</h2>
     <p class="reveal">جعبه مخملی سبز با فضای داخلی لوکس، همراه با کارت گارانتی و طراحی اختصاصی، مجموعه را برای نگهداری یا هدیه دادن جذاب‌تر می‌کند.</p>
     
     <div class="image-wrapper reveal" data-parallax="0.05">
-      <!-- عکس جعبه سبز رنگ -->
       <img class="photo" src="box.jpg" alt="جعبه و ساعت رومانل">
     </div>
   </section>
@@ -96,7 +101,7 @@
 </footer>
 
 <script>
-  // 1. ساعت زنده
+  // ساعت زنده
   function updateClock() {
     const now = new Date();
     document.getElementById('live-clock').textContent = now.toLocaleTimeString('fa-IR', { hour12: false });
@@ -104,7 +109,7 @@
   setInterval(updateClock, 1000);
   updateClock();
 
-  // 2. انیمیشن اسکرول
+  // انیمیشن اسکرول
   const reveals = document.querySelectorAll('.reveal');
   const revealOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -115,13 +120,12 @@
   }, { threshold: 0.1 });
   reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-  // 3. افکت 3D Tilt
+  // افکت 3D
   document.querySelectorAll('.tilt').forEach(el => {
     el.addEventListener('mousemove', e => {
       const rect = el.getBoundingClientRect();
       const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-      const centerX = rect.width / 2; const centerY = rect.height / 2;
-      el.style.transform = `perspective(1000px) rotateX(${((y - centerY) / centerY) * -10}deg) rotateY(${((x - centerX) / centerX) * 10}deg) scale3d(1.02, 1.02, 1.02)`;
+      el.style.transform = `perspective(1000px) rotateX(${((y - rect.height/2) / (rect.height/2)) * -10}deg) rotateY(${((x - rect.width/2) / (rect.width/2)) * 10}deg) scale3d(1.02, 1.02, 1.02)`;
     });
     el.addEventListener('mouseleave', () => {
       el.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
@@ -130,12 +134,11 @@
     el.addEventListener('mouseenter', () => el.style.transition = 'none');
   });
 
-  // 4. دکمه مغناطیسی
+  // دکمه مغناطیسی
   document.querySelectorAll('.magnetic').forEach(el => {
     el.addEventListener('mousemove', e => {
       const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2; const y = e.clientY - rect.top - rect.height / 2;
-      el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      el.style.transform = `translate(${(e.clientX - rect.left - rect.width/2) * 0.3}px, ${(e.clientY - rect.top - rect.height/2) * 0.3}px)`;
     });
     el.addEventListener('mouseleave', () => {
       el.style.transform = `translate(0px, 0px)`;
@@ -144,7 +147,7 @@
     el.addEventListener('mouseenter', () => el.style.transition = 'none');
   });
 
-  // 5. موس سفارشی
+  // موس سفارشی
   const cursor = document.querySelector('.custom-cursor');
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
@@ -154,7 +157,7 @@
     link.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   });
 
-  // 6. کهکشان
+  // کهکشان
   const canvas = document.getElementById('starfield'); const ctx = canvas.getContext('2d');
   let width, height, stars = [];
   function initCanvas() {
