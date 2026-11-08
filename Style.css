@@ -1,10 +1,10 @@
-/* ===== متغیرها ===== */
+/* ===== متغیرها (تغییر رنگ طلایی به سبز زمردی) ===== */
 :root {
   --bg-color: #040806;
   --text-main: #ffffff;
   --text-muted: #9bb5a8;
-  --gold: #e5c483;
-  --gold-glow: rgba(229, 196, 131, 0.4);
+  --brand-green: #2ecc71; /* سبز زمردی درخشان */
+  --brand-glow: rgba(46, 204, 113, 0.4); /* هاله سبز */
 }
 
 * { box-sizing: border-box; cursor: none; }
@@ -24,14 +24,14 @@ body {
 
 /* ===== موس سفارشی ===== */
 .custom-cursor {
-  position: fixed; width: 15px; height: 15px; background: var(--gold); border-radius: 50%;
+  position: fixed; width: 15px; height: 15px; background: var(--brand-green); border-radius: 50%;
   transform: translate(-50%, -50%); pointer-events: none; z-index: 9999;
-  transition: width 0.3s, height 0.3s, opacity 0.3s; box-shadow: 0 0 20px var(--gold-glow);
+  transition: width 0.3s, height 0.3s, opacity 0.3s; box-shadow: 0 0 20px var(--brand-glow);
   mix-blend-mode: difference;
 }
-.custom-cursor.hovering { width: 50px; height: 50px; background: transparent; border: 2px solid var(--gold); }
+.custom-cursor.hovering { width: 50px; height: 50px; background: transparent; border: 2px solid var(--brand-green); }
 
-/* ===== هدر (عکس اول: ساعت طلایی) ===== */
+/* ===== هدر ===== */
 header {
   min-height: 100vh;
   display: flex;
@@ -44,27 +44,31 @@ header {
 .hero, main { width: min(1100px, 90%); margin: auto; position: relative; z-index: 1; }
 .hero { padding: 80px 0; }
 
-/* لوگو */
+/* ===== لوگو (تبدیل به سبز) ===== */
 .logo-img {
   max-height: 120px; width: auto; mix-blend-mode: multiply; 
-  filter: grayscale(1) sepia(1) saturate(5) hue-rotate(5deg) brightness(1.2) drop-shadow(0 0 25px var(--gold-glow));
+  /* فیلتر تبدیل رنگ زرد به سبز تیره و درخشان */
+  filter: grayscale(1) sepia(1) hue-rotate(100deg) saturate(3) brightness(0.8) drop-shadow(0 0 25px var(--brand-glow));
   transition: transform 0.4s, filter 0.4s;
 }
-.logo-img:hover { transform: scale(1.05); filter: grayscale(1) sepia(1) saturate(5) hue-rotate(5deg) brightness(1.4) drop-shadow(0 0 35px rgba(229, 196, 131, 0.8)); }
+.logo-img:hover { 
+  transform: scale(1.05); 
+  filter: grayscale(1) sepia(1) hue-rotate(100deg) saturate(3) brightness(1) drop-shadow(0 0 35px rgba(46, 204, 113, 0.8)); 
+}
 
-.since { letter-spacing: 10px; color: var(--gold); font-size: 0.85rem; margin-top: 10px; font-weight: 700; }
+.since { letter-spacing: 10px; color: var(--brand-green); font-size: 0.85rem; margin-top: 10px; font-weight: 700; }
 
 /* ساعت */
 .clock {
   font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin: 20px 0;
-  font-variant-numeric: tabular-nums; text-shadow: 0 0 30px rgba(255,255,255,0.2);
+  font-variant-numeric: tabular-nums; text-shadow: 0 0 30px rgba(46, 204, 113, 0.3); /* هاله سبز */
   direction: ltr; display: inline-block; background: rgba(0,0,0,0.4);
-  padding: 5px 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+  padding: 5px 25px; border-radius: 15px; border: 1px solid rgba(46, 204, 113, 0.2); backdrop-filter: blur(10px);
 }
 
-/* متن متالیک */
+/* متن متالیک (با گرادیانت سبز) */
 .metallic-text {
-  background: linear-gradient(to right, #b8c2bc 0%, #ffffff 25%, var(--gold) 50%, #ffffff 75%, #b8c2bc 100%);
+  background: linear-gradient(to right, #a8c3b8 0%, #ffffff 25%, var(--brand-green) 50%, #ffffff 75%, #a8c3b8 100%);
   background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text;
   animation: shine 6s linear infinite; text-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
@@ -76,12 +80,12 @@ header {
 /* دکمه */
 .btn-container { margin-top: 40px; display: inline-block; }
 .btn-glow {
-  display: inline-flex; align-items: center; gap: 10px; color: #000; background: var(--gold);
+  display: inline-flex; align-items: center; gap: 10px; color: #000; background: var(--brand-green);
   padding: 16px 40px; text-decoration: none; border-radius: 50px; font-weight: 900; font-size: 1.2rem;
-  position: relative; overflow: hidden; box-shadow: 0 0 30px var(--gold-glow), inset 0 0 10px rgba(255,255,255,0.5);
+  position: relative; overflow: hidden; box-shadow: 0 0 30px var(--brand-glow), inset 0 0 10px rgba(255,255,255,0.5);
   transition: box-shadow 0.3s;
 }
-.btn-glow:hover { box-shadow: 0 0 50px var(--gold-glow), inset 0 0 15px rgba(255,255,255,0.8); }
+.btn-glow:hover { box-shadow: 0 0 50px var(--brand-glow), inset 0 0 15px rgba(255,255,255,0.8); }
 .btn-glow::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent); transition: 0.6s; }
 .btn-glow:hover::before { left: 100%; }
 .arrow { transition: transform 0.3s; }
@@ -89,34 +93,34 @@ header {
 
 /* ===== بخش‌ها ===== */
 section { padding: 100px 0; border-bottom: 1px solid rgba(255,255,255,0.03); position: relative; }
-.kicker { color: var(--gold); letter-spacing: 5px; font-weight: 900; font-size: 0.9rem; margin-bottom: 10px; }
+.kicker { color: var(--brand-green); letter-spacing: 5px; font-weight: 900; font-size: 0.9rem; margin-bottom: 10px; }
 h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 20px 0; font-weight: 900; color: #fff; }
 p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 
 /* ===== کارت های شیشه ای ===== */
 .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
 .card-wrapper { position: relative; padding: 2px; border-radius: 24px; background: rgba(255,255,255,0.05); overflow: hidden; }
-.card-wrapper::before { content: ''; position: absolute; top: 50%; left: 50%; width: 150%; height: 150%; background: conic-gradient(transparent, transparent, transparent, var(--gold)); transform: translate(-50%, -50%); animation: rotate 4s linear infinite; opacity: 0; transition: opacity 0.4s; }
+.card-wrapper::before { content: ''; position: absolute; top: 50%; left: 50%; width: 150%; height: 150%; background: conic-gradient(transparent, transparent, transparent, var(--brand-green)); transform: translate(-50%, -50%); animation: rotate 4s linear infinite; opacity: 0; transition: opacity 0.4s; }
 .card-wrapper:hover::before { opacity: 1; }
 @keyframes rotate { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
 .card-inner { background: rgba(8, 20, 14, 0.7); backdrop-filter: blur(15px); border-radius: 22px; padding: 40px 30px; position: relative; z-index: 1; height: 100%; border: 1px solid rgba(255,255,255,0.05); }
-.card-inner .icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+.card-inner .icon { font-size: 2.5rem; color: var(--brand-green); margin-bottom: 15px; }
 .card-inner h3 { color: #fff; margin-top: 0; font-size: 1.4rem; }
 .card-inner p { font-size: 1rem; margin-bottom: 0; color: var(--text-muted); }
 
 /* ===== عکس‌های لوکس ===== */
 .image-wrapper {
   margin-top: 40px; border-radius: 24px; padding: 3px;
-  background: linear-gradient(45deg, rgba(255,255,255,0.05), var(--gold), rgba(255,255,255,0.05));
-  box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 50px rgba(229, 196, 131, 0.15);
+  background: linear-gradient(45deg, rgba(255,255,255,0.05), var(--brand-green), rgba(255,255,255,0.05));
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 50px rgba(46, 204, 113, 0.15);
 }
 .photo { width: 100%; display: block; border-radius: 21px; }
 
 /* ===== نقل قول و فوتر ===== */
-.quote { text-align: center; color: #fff; font-size: clamp(1.5rem, 3.5vw, 2.5rem); padding: 60px 30px; margin-bottom: 40px; font-weight: 900; line-height: 1.5; border-radius: 30px; background: radial-gradient(circle, rgba(229, 196, 131, 0.05) 0%, transparent 70%); }
-.quote::before { content: '”'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-left: 10px; }
-.quote::after { content: '“'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-right: 10px; }
-footer { text-align: center; background: #020403; padding: 80px 30px; color: var(--text-muted); border-top: 1px solid rgba(229, 196, 131, 0.1); }
+.quote { text-align: center; color: #fff; font-size: clamp(1.5rem, 3.5vw, 2.5rem); padding: 60px 30px; margin-bottom: 40px; font-weight: 900; line-height: 1.5; border-radius: 30px; background: radial-gradient(circle, rgba(46, 204, 113, 0.05) 0%, transparent 70%); }
+.quote::before { content: '”'; color: var(--brand-green); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-left: 10px; }
+.quote::after { content: '“'; color: var(--brand-green); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-right: 10px; }
+footer { text-align: center; background: #020403; padding: 80px 30px; color: var(--text-muted); border-top: 1px solid rgba(46, 204, 113, 0.1); }
 footer strong { font-size: 3rem; letter-spacing: 8px; display: block; margin-bottom: 15px; }
 
 /* انیمیشن */
@@ -129,5 +133,5 @@ footer strong { font-size: 3rem; letter-spacing: 8px; display: block; margin-bot
   header { background: linear-gradient(180deg, rgba(4, 8, 6, 0.8) 0%, rgba(4, 8, 6, 0.95) 100%), url('hero-bg.jpg') center/cover no-repeat; }
   .hero { padding: 60px 0; } section { padding: 60px 0; }
   .clock { font-size: 1.8rem; } .tilt { transform: none !important; } .btn-glow { padding: 12px 30px; font-size: 1rem; }
-  .logo-img { mix-blend-mode: screen; filter: grayscale(1) sepia(1) saturate(5) hue-rotate(5deg) brightness(1.2); }
+  .logo-img { mix-blend-mode: screen; filter: grayscale(1) sepia(1) hue-rotate(100deg) saturate(3) brightness(0.8); }
 }
