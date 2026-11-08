@@ -1,181 +1,108 @@
 <!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ROMANEL | فراتر از زمان</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+<title>Romanel | Watch Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="Style.css">
 </head>
 <body>
 
-<canvas id="starfield"></canvas>
-<div class="custom-cursor"></div>
-
-<header>
-  <div class="hero">
-    <div class="brand reveal">
-      <img src="logo.png" alt="ROMANEL Logo" class="logo-img">
+<!-- هدر و منو -->
+<header class="main-header">
+  <div class="container header-inner">
+    <div class="logo">
+      <img src="logo.png" alt="Romanel Logo">
     </div>
-    
-    <div class="since reveal">SINCE 1974</div>
-    <div id="live-clock" class="clock reveal">00:00:00</div>
-
-    <h1 class="metallic-text reveal">فراتر از زمان؛<br>امضایی از سلیقه و ظرافت</h1>
-    <p class="subtitle reveal">نگاهی به ساعتی با صفحه روشن، جزئیات آبی و بدنه نقره‌ای؛ ترکیبی از سادگی مدرن و جلوه‌ای لوکس.</p>
-    
-    <div class="btn-container reveal">
-      <a class="btn-glow magnetic" href="#details">
-        <span>کشف جزئیات ساعت</span> <span class="arrow">↓</span>
-      </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Watches for Men</a></li>
+        <li><a href="#">Watches for Women</a></li>
+        <li><a href="#">Collections</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="#" class="cart-btn">Shopping Cart (0)</a>
     </div>
   </div>
 </header>
 
-<main>
-  <section id="details">
-    <div class="kicker reveal">THE DESIGN</div>
-    <h2 class="reveal">زیبایی در جزئیات پنهان است</h2>
-    <p class="reveal">در نگاه اول، هماهنگی صفحه روشن با نشانگرها و عقربه‌های آبی توجه را جلب می‌کند. قاب نقره‌ای و بند فلزی، ظاهر ساعت را یکدست و امروزی نشان می‌دهند؛ بدون آن‌که طراحی بیش از اندازه شلوغ شود.</p>
-    
-    <div class="features">
-      <div class="card-wrapper reveal">
-        <div class="card-inner tilt">
-          <div class="icon">✧</div>
-          <h3>صفحه چشم‌نواز</h3>
-          <p>زمینه روشن در کنار جزئیات آبی، تضادی ظریف و خوانا ایجاد می‌کند.</p>
-        </div>
-      </div>
-      <div class="card-wrapper reveal">
-        <div class="card-inner tilt">
-          <div class="icon">◈</div>
-          <h3>بدنه نقره‌ای</h3>
-          <p>ظاهر فلزی و براق، حس مرتب و مدرنی به ساعت می‌دهد.</p>
-        </div>
-      </div>
-      <div class="card-wrapper reveal">
-        <div class="card-inner tilt">
-          <div class="icon">◷</div>
-          <h3>جزئیات کاربردی</h3>
-          <p>نمایش تاریخ و صفحه فرعی، به طراحی شخصیت بیشتری می‌بخشند.</p>
-        </div>
+<!-- بخش قهرمان (Hero) -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h3 class="subtitle">FIND THE IDEAL GIFT</h3>
+    <h1 class="main-title">WRIST WATCH WITH<br>A MODERN TWIST</h1>
+    <a href="#collection" class="btn-dark">DISCOVER NOW</a>
+  </div>
+</section>
+
+<!-- دسته بندی ها -->
+<section class="categories-section">
+  <div class="container category-grid">
+    <div class="category-card">
+      <img src="men-watch.jpg" alt="Men Watches">
+      <div class="category-info">
+        <h2>WATCHES FOR<br>MEN</h2>
+        <a href="#">SHOP NOW →</a>
       </div>
     </div>
-  </section>
-
-  <!-- بخش جدید: عکس سوم (ساعت اسپرت) -->
-  <section>
-    <div class="kicker reveal">CHRONOGRAPH</div>
-    <h2 class="reveal">مهندسی شده برای موفقیت</h2>
-    <p class="reveal">ترکیب بی‌نظیر استایل ایتالیایی با تکنولوژی روز دنیا. مقاوم در برابر آب تا ۱۰ اتمسفر، بدنه فوق‌العاده بادوام و بند سیلیکونی راحت، این ساعت را به همراهی ایده‌آل برای هر لحظه تبدیل کرده است.</p>
-    
-    <div class="image-wrapper reveal" data-parallax="0.05">
-      <img class="photo" src="sport.jpg" alt="ساعت کرونوگراف رومانل">
+    <div class="category-card">
+      <img src="women-watch.jpg" alt="Women Watches">
+      <div class="category-info">
+        <h2>WATCHES FOR<br>WOMEN</h2>
+        <a href="#">SHOP NOW →</a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- بخش بسته بندی: عکس دوم (جعبه سبز) -->
-  <section>
-    <div class="kicker reveal">THE PRESENTATION</div>
-    <h2 class="reveal">بسته‌بندی‌ای هماهنگ با ظاهر ساعت</h2>
-    <p class="reveal">جعبه مخملی سبز با فضای داخلی لوکس، همراه با کارت گارانتی و طراحی اختصاصی، مجموعه را برای نگهداری یا هدیه دادن جذاب‌تر می‌کند.</p>
-    
-    <div class="image-wrapper reveal" data-parallax="0.05">
-      <img class="photo" src="box.jpg" alt="جعبه و ساعت رومانل">
+<!-- درباره برند (About) -->
+<section class="about-section">
+  <div class="container about-grid">
+    <div class="about-text">
+      <h3 class="subtitle">Romanel</h3>
+      <h2>Style, Art and Technology</h2>
+      <p>At Romanel, we believe that a watch is more than just a time display. As a fusion of art and technology, it is an outstanding tool to express one's taste and personality. Therefore, our goal at Romanel is to offer a variety of watches that also serve as a beautiful piece of jewelry and an example of your taste.</p>
+      <p>Every watch in Romanel is designed and made with special care and feeling. From simple and classic designs to modern and unique designs, you will find them all in a unique collection at Romanel.</p>
+      <a href="#" class="btn-outline">READ MORE</a>
     </div>
-  </section>
-
-  <section>
-    <div class="quote reveal">
-      «زمان می‌گذرد؛ اما سلیقه‌ای که با دقت انتخاب شده، در خاطر می‌ماند.»
+    <div class="about-image">
+      <img src="hero.jpg" alt="Romanel Watch Store">
     </div>
-    <h2 class="reveal">جمع‌بندی</h2>
-    <p class="reveal">ROMANEL با صفحه روشن، جزئیات آبی و ترکیب نقره‌ای، برای علاقه‌مندان به طراحی متعادل و شیک جذاب است. اگر به هماهنگی رنگ‌ها و ظرافت جزئیات اهمیت می‌دهید، این مدل ارزش بررسی دارد.</p>
-  </section>
-</main>
+  </div>
+</section>
 
-<footer>
-  <strong class="metallic-text">ROMANEL</strong><br>
-  SINCE 1974<br>
-  فراتر از زمان، همراه لحظه‌های شما
+<!-- مزایا و ویژگی ها -->
+<section class="features-section">
+  <div class="container features-grid">
+    <div class="feature-item">
+      <div class="icon">✈</div>
+      <h4>FREE EXPRESS DELIVERY</h4>
+    </div>
+    <div class="feature-item">
+      <div class="icon">🌐</div>
+      <h4>WORLDWIDE SHIPPING</h4>
+    </div>
+    <div class="feature-item">
+      <div class="icon">🇮🇹</div>
+      <h4>HAND MADE IN ITALY</h4>
+    </div>
+    <div class="feature-item">
+      <div class="icon">🛡</div>
+      <h4>AUTHENTIC AND CERTIFIED WATCHES</h4>
+    </div>
+  </div>
+</section>
+
+<!-- فوتر -->
+<footer class="main-footer">
+  <div class="container">
+    <p>&copy; 2024 Romanel Watches. All Rights Reserved.</p>
+  </div>
 </footer>
-
-<script>
-  // ساعت زنده
-  function updateClock() {
-    const now = new Date();
-    document.getElementById('live-clock').textContent = now.toLocaleTimeString('fa-IR', { hour12: false });
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  // انیمیشن اسکرول
-  const reveals = document.querySelectorAll('.reveal');
-  const revealOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(reveal => revealOnScroll.observe(reveal));
-
-  // افکت 3D
-  document.querySelectorAll('.tilt').forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-      el.style.transform = `perspective(1000px) rotateX(${((y - rect.height/2) / (rect.height/2)) * -10}deg) rotateY(${((x - rect.width/2) / (rect.width/2)) * 10}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
-      el.style.transition = 'transform 0.5s ease';
-    });
-    el.addEventListener('mouseenter', () => el.style.transition = 'none');
-  });
-
-  // دکمه مغناطیسی
-  document.querySelectorAll('.magnetic').forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      el.style.transform = `translate(${(e.clientX - rect.left - rect.width/2) * 0.3}px, ${(e.clientY - rect.top - rect.height/2) * 0.3}px)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = `translate(0px, 0px)`;
-      el.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    });
-    el.addEventListener('mouseenter', () => el.style.transition = 'none');
-  });
-
-  // موس سفارشی
-  const cursor = document.querySelector('.custom-cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-  });
-  document.querySelectorAll('a, .tilt, .logo-img').forEach(link => {
-    link.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-    link.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-  });
-
-  // کهکشان
-  const canvas = document.getElementById('starfield'); const ctx = canvas.getContext('2d');
-  let width, height, stars = [];
-  function initCanvas() {
-    width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; stars = [];
-    for (let i = 0; i < 150; i++) stars.push({ x: Math.random() * width, y: Math.random() * height, radius: Math.random() * 1.5, vx: Math.random() * 0.3 - 0.15, vy: Math.random() * 0.3 - 0.15, alpha: Math.random() * 0.5 + 0.1 });
-  }
-  function drawStars() {
-    ctx.clearRect(0, 0, width, height);
-    stars.forEach(star => {
-      ctx.beginPath(); ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2); ctx.fillStyle = `rgba(229, 196, 131, ${star.alpha})`; ctx.fill();
-      star.x += star.vx; star.y += star.vy;
-      if (star.x < 0) star.x = width; if (star.x > width) star.x = 0;
-      if (star.y < 0) star.y = height; if (star.y > height) star.y = 0;
-    });
-    requestAnimationFrame(drawStars);
-  }
-  window.addEventListener('resize', initCanvas); initCanvas(); drawStars();
-</script>
 
 </body>
 </html>
