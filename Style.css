@@ -5,7 +5,7 @@
   --text-muted: #9bb5a8;
   --gold: #e5c483;
   --gold-glow: rgba(229, 196, 131, 0.4);
-  --brand-green: #0f4a2b; /* سبز تیره */
+  --brand-green: #0f4a2b; /* سبز تیره برند */
   --brand-green-glow: rgba(15, 74, 43, 0.5);
 }
 
@@ -16,7 +16,7 @@ body {
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  font-family: Tahoma, Arial, sans-serif; /* فونت آفلاین بدون نیاز به گوگل */
   line-height: 1.8;
   overflow-x: hidden;
 }
@@ -66,7 +66,7 @@ header {
   text-shadow: 0 0 10px rgba(15, 74, 43, 0.3); 
 }
 
-/* ساعت */
+/* ساعت زنده */
 .clock {
   font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin: 20px 0;
   font-variant-numeric: tabular-nums; text-shadow: 0 0 30px rgba(255,255,255,0.2);
@@ -146,26 +146,43 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 .quote::before { content: '”'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-left: 10px; }
 .quote::after { content: '“'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-right: 10px; }
 
-/* ===== فوتر ===== */
+/* ========================================= */
+/* ===== فوتر (اصلاح شده برای عکس و متن) ===== */
+/* ========================================= */
 footer { 
   text-align: center; 
   background: #020403; 
-  padding: 80px 30px; 
-  color: var(--text-muted); 
+  padding: 80px 20px; 
   border-top: 1px solid rgba(229, 196, 131, 0.1); 
+}
+
+/* ظرف قرارگیری لوگو و متن */
+.footer-brand-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* فاصله بین لوگو و متن */
+  margin-bottom: 10px;
+}
+
+/* تنظیم لوگوی فوتر */
+.footer-logo {
+  height: 50px;
+  width: auto;
+  mix-blend-mode: screen; /* حذف پس زمینه */
+  filter: sepia(1) hue-rotate(90deg) saturate(2) brightness(0.8) drop-shadow(0 0 10px var(--brand-green-glow));
 }
 
 /* کلمه ROMANEL در فوتر (سبز تیره) */
 .footer-brand-text { 
-  font-size: 3rem; 
-  letter-spacing: 5px; 
-  display: block; 
-  margin-bottom: 10px; 
+  font-size: 2.8rem; 
+  letter-spacing: 4px; 
   color: var(--brand-green); 
   text-shadow: 0 0 15px rgba(15, 74, 43, 0.3);
+  line-height: 1.2;
 }
 
-/* متن SINCE 1974 در فوتر (سبز تیره) */
+/* SINCE 1974 در فوتر (سبز تیره) */
 .footer-since {
   color: var(--brand-green);
   font-size: 1rem;
@@ -192,4 +209,9 @@ footer {
   .hero { padding: 60px 0; } section { padding: 60px 0; }
   .clock { font-size: 1.8rem; } .tilt { transform: none !important; } .btn-glow { padding: 12px 30px; font-size: 1rem; }
   .logo-img { mix-blend-mode: screen; filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(2) brightness(0.6); }
+  
+  /* تنظیم فوتر در موبایل (قرارگیری در یک خط) */
+  .footer-brand-container { flex-direction: row; gap: 10px; }
+  .footer-brand-text { font-size: 2rem; letter-spacing: 2px; }
+  .footer-logo { height: 40px; }
 }
