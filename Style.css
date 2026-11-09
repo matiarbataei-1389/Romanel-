@@ -5,7 +5,7 @@
   --text-muted: #9bb5a8;
   --gold: #e5c483;
   --gold-glow: rgba(229, 196, 131, 0.4);
-  --brand-green: #0f4a2b; /* سبز تیره برند */
+  --brand-green: #0f4a2b;
   --brand-green-glow: rgba(15, 74, 43, 0.5);
 }
 
@@ -16,15 +16,14 @@ body {
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: Tahoma, Arial, sans-serif; /* فونت آفلاین بدون نیاز به گوگل */
+  font-family: Tahoma, Arial, sans-serif;
   line-height: 1.8;
   overflow-x: hidden;
 }
 
-/* ===== بوم کهکشانی ===== */
 #starfield { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
 
-/* ===== موس سفارشی ===== */
+/* موس سفارشی */
 .custom-cursor {
   position: fixed; width: 15px; height: 15px; background: var(--gold); border-radius: 50%;
   transform: translate(-50%, -50%); pointer-events: none; z-index: 9999;
@@ -33,7 +32,7 @@ body {
 }
 .custom-cursor.hovering { width: 50px; height: 50px; background: transparent; border: 2px solid var(--gold); }
 
-/* ===== هدر ===== */
+/* هدر */
 header {
   min-height: 100vh;
   display: flex;
@@ -46,7 +45,7 @@ header {
 .hero, main { width: min(1100px, 90%); margin: auto; position: relative; z-index: 1; }
 .hero { padding: 80px 0; }
 
-/* ===== لوگو هدر ===== */
+/* لوگو هدر */
 .logo-img {
   max-height: 120px; width: auto; mix-blend-mode: multiply; 
   filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(2) brightness(0.6) drop-shadow(0 0 20px var(--brand-green-glow));
@@ -58,15 +57,11 @@ header {
 }
 
 .since { 
-  letter-spacing: 10px; 
-  color: var(--brand-green); 
-  font-size: 0.85rem; 
-  margin-top: 10px; 
-  font-weight: 700; 
-  text-shadow: 0 0 10px rgba(15, 74, 43, 0.3); 
+  letter-spacing: 10px; color: var(--brand-green); font-size: 0.85rem; 
+  margin-top: 10px; font-weight: 700; text-shadow: 0 0 10px rgba(15, 74, 43, 0.3); 
 }
 
-/* ساعت زنده */
+/* ساعت */
 .clock {
   font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin: 20px 0;
   font-variant-numeric: tabular-nums; text-shadow: 0 0 30px rgba(255,255,255,0.2);
@@ -99,13 +94,13 @@ header {
 .arrow { transition: transform 0.3s; }
 .btn-glow:hover .arrow { transform: translateY(5px); }
 
-/* ===== بخش‌ها ===== */
+/* بخش‌ها */
 section { padding: 100px 0; border-bottom: 1px solid rgba(255,255,255,0.03); position: relative; }
 .kicker { color: var(--gold); letter-spacing: 5px; font-weight: 900; font-size: 0.9rem; margin-bottom: 10px; }
 h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 20px 0; font-weight: 900; color: #fff; }
 p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 
-/* ===== کارت های شیشه ای ===== */
+/* کارت ها */
 .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
 .card-wrapper { position: relative; padding: 2px; border-radius: 24px; background: rgba(255,255,255,0.05); overflow: hidden; }
 .card-wrapper::before { content: ''; position: absolute; top: 50%; left: 50%; width: 150%; height: 150%; background: conic-gradient(transparent, transparent, transparent, var(--gold)); transform: translate(-50%, -50%); animation: rotate 4s linear infinite; opacity: 0; transition: opacity 0.4s; }
@@ -116,93 +111,76 @@ p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
 .card-inner h3 { color: #fff; margin-top: 0; font-size: 1.4rem; }
 .card-inner p { font-size: 1rem; margin-bottom: 0; color: var(--text-muted); }
 
-/* ===== عکس‌های لوکس ===== */
+/* ===== قاب عکس‌ها (اصلاح شده برای جلوگیری از باگ) ===== */
 .image-wrapper {
-  margin-top: 40px; border-radius: 24px; padding: 3px;
-  background: linear-gradient(45deg, rgba(255,255,255,0.05), var(--gold), rgba(255,255,255,0.05));
+  margin-top: 40px; 
+  border-radius: 24px; 
+  padding: 4px; /* کمی ضخیم‌تر برای دیده شدن قاب */
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), var(--gold), rgba(255,255,255,0.1));
   box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 50px rgba(229, 196, 131, 0.15);
+  width: 100%;
+  display: block;
 }
-.photo { width: 100%; display: block; border-radius: 21px; }
 
-/* ===== بخش محصولات تک ===== */
+.photo { 
+  width: 100%; 
+  height: auto; 
+  display: block; 
+  border-radius: 20px; 
+  object-fit: cover;
+}
+
+/* بخش محصولات */
 .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
 .product-card { text-align: center; transition: transform 0.3s; }
 .product-card:hover { transform: translateY(-10px); }
 .product-img-wrapper { 
-  background: rgba(255,255,255,0.03); 
-  border-radius: 20px; 
-  padding: 20px; 
-  margin-bottom: 20px;
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: border-color 0.3s;
+  background: rgba(255,255,255,0.03); border-radius: 20px; padding: 20px; 
+  margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.3s;
 }
 .product-card:hover .product-img-wrapper { border-color: var(--gold); }
 .product-img-wrapper img { width: 100%; height: auto; object-fit: contain; }
 .product-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
 .product-card p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
 
-/* ===== نقل قول ===== */
+/* نقل قول */
 .quote { text-align: center; color: #fff; font-size: clamp(1.5rem, 3.5vw, 2.5rem); padding: 60px 30px; margin-bottom: 40px; font-weight: 900; line-height: 1.5; border-radius: 30px; background: radial-gradient(circle, rgba(229, 196, 131, 0.05) 0%, transparent 70%); }
 .quote::before { content: '”'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-left: 10px; }
 .quote::after { content: '“'; color: var(--gold); font-size: 6rem; line-height: 0; vertical-align: -30px; margin-right: 10px; }
 
-/* ========================================= */
-/* ===== فوتر (اصلاح شده برای عکس و متن) ===== */
-/* ========================================= */
+/* فوتر */
 footer { 
-  text-align: center; 
-  background: #020403; 
-  padding: 80px 20px; 
+  text-align: center; background: #020403; padding: 80px 20px; 
   border-top: 1px solid rgba(229, 196, 131, 0.1); 
 }
 
-/* ظرف قرارگیری لوگو و متن */
 .footer-brand-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px; /* فاصله بین لوگو و متن */
-  margin-bottom: 10px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 15px; margin-bottom: 10px;
 }
 
-/* تنظیم لوگوی فوتر */
 .footer-logo {
-  height: 50px;
-  width: auto;
-  mix-blend-mode: screen; /* حذف پس زمینه */
+  height: 50px; width: auto; mix-blend-mode: screen;
   filter: sepia(1) hue-rotate(90deg) saturate(2) brightness(0.8) drop-shadow(0 0 10px var(--brand-green-glow));
 }
 
-/* کلمه ROMANEL در فوتر (سبز تیره) */
 .footer-brand-text { 
-  font-size: 2.8rem; 
-  letter-spacing: 4px; 
-  color: var(--brand-green); 
-  text-shadow: 0 0 15px rgba(15, 74, 43, 0.3);
-  line-height: 1.2;
+  font-size: 2.8rem; letter-spacing: 4px; color: var(--brand-green);
+  text-shadow: 0 0 15px rgba(15, 74, 43, 0.3); line-height: 1.2;
 }
 
-/* SINCE 1974 در فوتر (سبز تیره) */
 .footer-since {
-  color: var(--brand-green);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 4px;
-  display: block;
-  margin-bottom: 15px;
+  color: var(--brand-green); font-size: 1rem; font-weight: 700;
+  letter-spacing: 4px; display: block; margin-bottom: 15px;
 }
 
-/* متن پایانی */
-.footer-tagline {
-  font-size: 1rem;
-  color: var(--text-muted);
-}
+.footer-tagline { font-size: 1rem; color: var(--text-muted); }
 
-/* انیمیشن اسکرول */
+/* انیمیشن */
 .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* ===== موبایل ===== */
+/* موبایل */
 @media(max-width: 768px) {
   * { cursor: auto; } .custom-cursor { display: none; }
   header { background: linear-gradient(180deg, rgba(4, 8, 6, 0.8) 0%, rgba(4, 8, 6, 0.95) 100%), url('hero.png') center/cover no-repeat; }
@@ -210,7 +188,6 @@ footer {
   .clock { font-size: 1.8rem; } .tilt { transform: none !important; } .btn-glow { padding: 12px 30px; font-size: 1rem; }
   .logo-img { mix-blend-mode: screen; filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(2) brightness(0.6); }
   
-  /* تنظیم فوتر در موبایل (قرارگیری در یک خط) */
   .footer-brand-container { flex-direction: row; gap: 10px; }
   .footer-brand-text { font-size: 2rem; letter-spacing: 2px; }
   .footer-logo { height: 40px; }
